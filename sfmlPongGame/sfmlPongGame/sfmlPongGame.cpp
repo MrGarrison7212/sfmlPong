@@ -51,6 +51,14 @@ int main()
 		return -1;
 	}
 
+	//Shapes
+
+	sf::RectangleShape background;
+
+	background.setSize(sf::Vector2f(800, 600));
+	background.setPosition(0, 0);
+	background.setTexture(&tex_background);
+
 	while (play == true) {
 
 		while (window.pollEvent(event)) {
@@ -60,7 +68,11 @@ int main()
 
 		}
 
+		//rendering
 		window.clear();
+
+		window.draw(background);
+
 		window.display();
 	}
 
