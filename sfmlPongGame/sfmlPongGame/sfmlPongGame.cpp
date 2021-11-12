@@ -4,22 +4,67 @@
 #include "pch.h"
 #include <iostream>
 #include <SFML\Graphics.hpp>
+#include <SFML\Audio.hpp>
 
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Works");
 
-	while (window.isOpen()) {
+	window.setFramerateLimit(60);
 
-		sf::Event event;
+	window.setKeyRepeatEnabled(false);
+
+	bool play = true;
+
+	sf::Event event;
+
+	//font
+
+	sf::Font font;
+
+	if (font.loadFromFile("Data/arial.ttf") == 0) {
+		return 1;
+	}
+
+	//images
+	sf::Texture tex_pad;
+	sf::Texture tex_ball;
+	sf::Texture tex_background;
+
+	if (tex_pad.loadFromFile("Data/pad.png") == false) {
+		return -1;
+	}
+
+	if (tex_ball.loadFromFile("Data/ball.png") == false) {
+		return -1;
+	}
+
+	if (tex_background.loadFromFile("Data/background.png") == false) {
+		return -1;
+	}
+
+	//sounds
+
+	sf::SoundBuffer buff_hit;
+
+	if (buff_hit.loadFromFile("Data/hit.wav") == false) {
+		return -1;
+	}
+
+	while (play == true) {
+
 		while (window.pollEvent(event)) {
-
+			if (event.type == sf::Event::Closed) {
+				play = false;
+			}
 
 		}
 
 		window.clear();
 		window.display();
 	}
+
+	window.close();
 
 	return 0;
 }
