@@ -53,11 +53,23 @@ int main()
 
 	//Shapes
 
+	//background
 	sf::RectangleShape background;
-
 	background.setSize(sf::Vector2f(800, 600));
 	background.setPosition(0, 0);
 	background.setTexture(&tex_background);
+
+	//pad1
+	sf::RectangleShape pad1;
+	pad1.setSize(sf::Vector2f(30, 150));
+	pad1.setPosition(50, 200);
+	pad1.setTexture(&tex_pad);
+
+	//pad2
+	sf::RectangleShape pad2;
+	pad2.setSize(sf::Vector2f(30, 150));
+	pad2.setPosition(720, 200);
+	pad2.setTexture(&tex_pad);
 
 	while (play == true) {
 
@@ -72,6 +84,8 @@ int main()
 		window.clear();
 
 		window.draw(background);
+		window.draw(pad1);
+		window.draw(pad2);
 
 		window.display();
 	}
