@@ -71,6 +71,12 @@ int main()
 	pad2.setPosition(720, 200);
 	pad2.setTexture(&tex_pad);
 
+	//ball
+	sf::RectangleShape ball;
+	ball.setSize(sf::Vector2f(30, 30));
+	ball.setPosition(400, 270);
+	ball.setTexture(&tex_ball);
+
 	while (play == true) {
 
 		while (window.pollEvent(event)) {
@@ -86,6 +92,8 @@ int main()
 		window.draw(background);
 		window.draw(pad1);
 		window.draw(pad2);
+		window.draw(ball);
+
 
 		window.display();
 	}
