@@ -51,6 +51,10 @@ int main()
 		return -1;
 	}
 
+	//States
+	bool up = false;
+	bool down = false;
+
 	//Shapes
 
 	//background
@@ -77,8 +81,10 @@ int main()
 	ball.setPosition(400, 270);
 	ball.setTexture(&tex_ball);
 
+	//game loop
 	while (play == true) {
 
+		//Events
 		while (window.pollEvent(event)) {
 			if (event.type == sf::Event::Closed) {
 				play = false;
