@@ -55,6 +55,10 @@ int main()
 	bool up = false;
 	bool down = false;
 
+	//Variables
+	int yVelocityPad1 = 0;
+
+
 	//Shapes
 
 	//background
@@ -89,9 +93,43 @@ int main()
 			if (event.type == sf::Event::Closed) {
 				play = false;
 			}
+			//key pressed
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Up) {
+				up = true;
+			}
 
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Down) {
+				down = true;
+			}
+			//key released
+			if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Up) {
+				up = false;
+			}
+
+			if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Down) {
+				down = false;
+			}
 		}
 
+		//logic
+		if (up == true) {
+			yVelocityPad1 = -5;
+		}
+
+		if (down == true) {
+			yVelocityPad1 = 5;
+		}
+
+		if (up == true && down == true) {
+			yVelocityPad1 = 0;
+		}
+
+		if (up == false && down == false) {
+			yVelocityPad1 = 0;
+		}
+
+
+		pad1.move(0, yVelocityPad1);
 		//rendering
 		window.clear();
 
