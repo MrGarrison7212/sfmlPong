@@ -130,6 +130,16 @@ int main()
 
 
 		pad1.move(0, yVelocityPad1);
+
+		//out of bounds
+
+		if (pad1.getPosition().y < 0) {
+			pad1.setPosition(50, 0);
+		}
+
+		if (pad1.getPosition().y > 450) {
+			pad1.setPosition(50, 450);
+		}
 		//rendering
 		window.clear();
 
