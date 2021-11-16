@@ -59,6 +59,7 @@ int main()
 	int yVelocityPad1 = 0;
 	int xVelocityBall = -3;
 	int yVelocityBall = -3;
+	int yVelocityPad2 = 0;
 
 
 	//Shapes
@@ -143,6 +144,17 @@ int main()
 		if (pad1.getPosition().y > 450) {
 			pad1.setPosition(50, 450);
 		}
+
+		//pad2- AI
+		if (ball.getPosition().y < pad2.getPosition().y) {
+			yVelocityPad2 = -2;
+		}
+
+		if (ball.getPosition().y > pad2.getPosition().y) {
+			yVelocityPad2 = 2;
+		}
+
+		pad2.move(0, yVelocityPad2);
 
 		//ball
 		ball.move(xVelocityBall, yVelocityBall);
