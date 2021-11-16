@@ -57,6 +57,8 @@ int main()
 
 	//Variables
 	int yVelocityPad1 = 0;
+	int xVelocityBall = -3;
+	int yVelocityBall = -3;
 
 
 	//Shapes
@@ -111,7 +113,8 @@ int main()
 			}
 		}
 
-		//logic
+		//LOGIC
+		//pad1
 		if (up == true) {
 			yVelocityPad1 = -5;
 		}
@@ -140,6 +143,20 @@ int main()
 		if (pad1.getPosition().y > 450) {
 			pad1.setPosition(50, 450);
 		}
+
+		//ball
+		ball.move(xVelocityBall, yVelocityBall);
+
+		//out of bounds
+
+		if (ball.getPosition().y < 0) {
+			yVelocityBall = -yVelocityBall;
+		}
+
+		if (ball.getPosition().y > 450) {
+			yVelocityBall = -yVelocityBall;
+		}
+
 		//rendering
 		window.clear();
 
