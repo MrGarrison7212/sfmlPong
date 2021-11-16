@@ -165,10 +165,18 @@ int main()
 			yVelocityBall = -yVelocityBall;
 		}
 
-		if (ball.getPosition().y > 450) {
+		if (ball.getPosition().y > 570) {
 			yVelocityBall = -yVelocityBall;
 		}
 
+		//collision with pad1
+		if (ball.getGlobalBounds().intersects(pad1.getGlobalBounds()) == true) {
+			xVelocityBall = -xVelocityBall;
+		}
+		//collision with pad2
+		if (ball.getGlobalBounds().intersects(pad2.getGlobalBounds()) == true) {
+			xVelocityBall = -xVelocityBall;
+		}
 		//rendering
 		window.clear();
 
