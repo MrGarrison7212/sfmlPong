@@ -47,6 +47,9 @@ int main()
 
 	sf::SoundBuffer buff_hit;
 
+	sf::Sound hit;
+	hit.setBuffer(buff_hit);
+
 	if (buff_hit.loadFromFile("Data/hit.wav") == false) {
 		return -1;
 	}
@@ -57,8 +60,8 @@ int main()
 
 	//Variables
 	int yVelocityPad1 = 0;
-	int xVelocityBall = -3;
-	int yVelocityBall = -3;
+	int xVelocityBall = -4;
+	int yVelocityBall = -4;
 	int yVelocityPad2 = 0;
 
 
@@ -172,10 +175,12 @@ int main()
 		//collision with pad1
 		if (ball.getGlobalBounds().intersects(pad1.getGlobalBounds()) == true) {
 			xVelocityBall = -xVelocityBall;
+			hit.play();
 		}
 		//collision with pad2
 		if (ball.getGlobalBounds().intersects(pad2.getGlobalBounds()) == true) {
 			xVelocityBall = -xVelocityBall;
+			hit.play();
 		}
 		//rendering
 		window.clear();
